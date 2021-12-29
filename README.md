@@ -8,6 +8,8 @@
 Paper: Jo, S., & Yu, I. J. (2021). Puzzle-CAM: Improved localization via matching partial and full features. arXiv preprint arXiv:2101.11253.
 
 Official implementation: https://github.com/OFRIN/PuzzleCAM
+
+Dataset: PASCAL VOC 2012 ()
 ## Results
 實驗中我們嘗試使用兩種 backbone 進行比較: ResNet-101 & ResNet-269
 ### Generated Pseudo-label
