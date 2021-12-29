@@ -1,0 +1,51 @@
+[i] AffinityNet@ResNeSt-101@Puzzle
+
+[i] mean values is [0.485, 0.456, 0.406]
+[i] std values is [0.229, 0.224, 0.225]
+[i] The number of class is 20
+[i] train_transform is Compose(
+    <tools.ai.augment_utils.RandomResize_For_Segmentation object at 0x7faf604f3ef0>
+    <tools.ai.augment_utils.RandomHorizontalFlip_For_Segmentation object at 0x7faf604f3eb8>
+    <tools.ai.augment_utils.Normalize_For_Segmentation object at 0x7faf604f3e80>
+    <tools.ai.augment_utils.RandomCrop_For_Segmentation object at 0x7faf604f3f60>
+    <tools.ai.augment_utils.Transpose_For_Segmentation object at 0x7faf605090f0>
+    <tools.ai.augment_utils.Resize_For_Mask object at 0x7faf60509128>
+)
+
+[i] log_iteration : 33
+[i] val_iteration : 330
+[i] max_iteration : 990
+[i] Architecture is resnest101
+[i] Total Params: 46.35M
+
+[i] the number of gpu : 2
+[i]                 iteration=33,                 learning_rate=0.0971,                 loss=0.5397,                 bg_loss=0.5018,                 fg_loss=0.6405,                 neg_loss=0.5083,                 time=32sec
+[i]                 iteration=66,                 learning_rate=0.0941,                 loss=0.3926,                 bg_loss=0.3462,                 fg_loss=0.4848,                 neg_loss=0.3697,                 time=29sec
+[i]                 iteration=99,                 learning_rate=0.0910,                 loss=0.3407,                 bg_loss=0.2932,                 fg_loss=0.4293,                 neg_loss=0.3202,                 time=29sec
+[i]                 iteration=132,                 learning_rate=0.0880,                 loss=0.3537,                 bg_loss=0.2871,                 fg_loss=0.4536,                 neg_loss=0.3371,                 time=29sec
+[i]                 iteration=165,                 learning_rate=0.0850,                 loss=0.3460,                 bg_loss=0.2785,                 fg_loss=0.4477,                 neg_loss=0.3289,                 time=29sec
+[i]                 iteration=198,                 learning_rate=0.0819,                 loss=0.3226,                 bg_loss=0.2736,                 fg_loss=0.4055,                 neg_loss=0.3056,                 time=29sec
+[i]                 iteration=231,                 learning_rate=0.0788,                 loss=0.3217,                 bg_loss=0.2579,                 fg_loss=0.4310,                 neg_loss=0.2990,                 time=29sec
+[i]                 iteration=264,                 learning_rate=0.0757,                 loss=0.3198,                 bg_loss=0.2484,                 fg_loss=0.4244,                 neg_loss=0.3031,                 time=29sec
+[i]                 iteration=297,                 learning_rate=0.0726,                 loss=0.3181,                 bg_loss=0.2515,                 fg_loss=0.4262,                 neg_loss=0.2974,                 time=29sec
+[i]                 iteration=330,                 learning_rate=0.0695,                 loss=0.3158,                 bg_loss=0.2465,                 fg_loss=0.4153,                 neg_loss=0.3008,                 time=29sec
+[i]                 iteration=363,                 learning_rate=0.0664,                 loss=0.3132,                 bg_loss=0.2407,                 fg_loss=0.4190,                 neg_loss=0.2966,                 time=32sec
+[i]                 iteration=396,                 learning_rate=0.0632,                 loss=0.3201,                 bg_loss=0.2456,                 fg_loss=0.4251,                 neg_loss=0.3049,                 time=29sec
+[i]                 iteration=429,                 learning_rate=0.0601,                 loss=0.3125,                 bg_loss=0.2412,                 fg_loss=0.4229,                 neg_loss=0.2929,                 time=29sec
+[i]                 iteration=462,                 learning_rate=0.0569,                 loss=0.3016,                 bg_loss=0.2401,                 fg_loss=0.3984,                 neg_loss=0.2839,                 time=29sec
+[i]                 iteration=495,                 learning_rate=0.0537,                 loss=0.3030,                 bg_loss=0.2348,                 fg_loss=0.4111,                 neg_loss=0.2831,                 time=29sec
+[i]                 iteration=528,                 learning_rate=0.0505,                 loss=0.3064,                 bg_loss=0.2324,                 fg_loss=0.4205,                 neg_loss=0.2864,                 time=29sec
+[i]                 iteration=561,                 learning_rate=0.0472,                 loss=0.2966,                 bg_loss=0.2265,                 fg_loss=0.4005,                 neg_loss=0.2798,                 time=29sec
+[i]                 iteration=594,                 learning_rate=0.0439,                 loss=0.2981,                 bg_loss=0.2356,                 fg_loss=0.3926,                 neg_loss=0.2821,                 time=29sec
+[i]                 iteration=627,                 learning_rate=0.0406,                 loss=0.2980,                 bg_loss=0.2321,                 fg_loss=0.4082,                 neg_loss=0.2758,                 time=29sec
+[i]                 iteration=660,                 learning_rate=0.0373,                 loss=0.3055,                 bg_loss=0.2293,                 fg_loss=0.4151,                 neg_loss=0.2888,                 time=29sec
+[i]                 iteration=693,                 learning_rate=0.0339,                 loss=0.2984,                 bg_loss=0.2266,                 fg_loss=0.4125,                 neg_loss=0.2773,                 time=32sec
+[i]                 iteration=726,                 learning_rate=0.0305,                 loss=0.2961,                 bg_loss=0.2263,                 fg_loss=0.4009,                 neg_loss=0.2786,                 time=29sec
+[i]                 iteration=759,                 learning_rate=0.0271,                 loss=0.2928,                 bg_loss=0.2221,                 fg_loss=0.4049,                 neg_loss=0.2720,                 time=29sec
+[i]                 iteration=792,                 learning_rate=0.0236,                 loss=0.3040,                 bg_loss=0.2297,                 fg_loss=0.4025,                 neg_loss=0.2919,                 time=29sec
+[i]                 iteration=825,                 learning_rate=0.0200,                 loss=0.2918,                 bg_loss=0.2269,                 fg_loss=0.3898,                 neg_loss=0.2752,                 time=29sec
+[i]                 iteration=858,                 learning_rate=0.0164,                 loss=0.2907,                 bg_loss=0.2207,                 fg_loss=0.4036,                 neg_loss=0.2693,                 time=29sec
+[i]                 iteration=891,                 learning_rate=0.0127,                 loss=0.3030,                 bg_loss=0.2274,                 fg_loss=0.4165,                 neg_loss=0.2841,                 time=29sec
+[i]                 iteration=924,                 learning_rate=0.0089,                 loss=0.2941,                 bg_loss=0.2243,                 fg_loss=0.4012,                 neg_loss=0.2755,                 time=29sec
+[i]                 iteration=957,                 learning_rate=0.0048,                 loss=0.3009,                 bg_loss=0.2270,                 fg_loss=0.4071,                 neg_loss=0.2847,                 time=29sec
+[i]                 iteration=990,                 learning_rate=0.0002,                 loss=0.2944,                 bg_loss=0.2294,                 fg_loss=0.3934,                 neg_loss=0.2775,                 time=28sec
