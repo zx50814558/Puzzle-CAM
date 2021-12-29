@@ -9,7 +9,7 @@ Paper: Jo, S., & Yu, I. J. (2021). Puzzle-CAM: Improved localization via matchin
 
 Official implementation: https://github.com/OFRIN/PuzzleCAM
 
-Dataset: PASCAL VOC 2012 ()
+Dataset: PASCAL VOC 2012 (http://host.robots.ox.ac.uk/pascal/VOC/voc2012/)
 ## Results
 實驗中我們嘗試使用兩種 backbone 進行比較: ResNet-101 & ResNet-269
 ### Generated Pseudo-label
