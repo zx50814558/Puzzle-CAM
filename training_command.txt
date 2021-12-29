@@ -1,0 +1,46 @@
+1. Train an image classifier for generating CAMs
+訓練一個影像分類器模型
+CUDA_VISIBLE_DEVICES=0,1 python train_classification_with_puzzle.py --architecture resnest101 --re_loss_option masking --re_loss L1_Loss --alpha_schedule 0.50 --alpha 4.00 --tag ResNeSt101@Puzzle@optimal --data_dir ../VOCdevkit/VOC2012/ --num_workers 0 --batch_size 8
+
+2. Apply Random Walk (RW) to refine the generated CAMs 
+通過預測圖片生成影像分類器模型產生的CAM
+CUDA_VISIBLE_DEVICES=0,1 python inference_classification.py --architecture resnest101 --tag ResNeSt101@Puzzle@optimal --domain train_aug --data_dir ../VOCdevkit/VOC2012/ --num_workers 0
+製造相似性標籤
+python make_affinity_labels.py --experiment_name ResNeSt101@Puzzle@optimal@train@scale=0.5,1.0,1.5,2.0 --domain train_aug --fg_threshold 0.40 --bg_threshold 0.10 --data_dir ../VOCdevkit/VOC2012/
+
+用製造的相似性標籤訓練AffinityNet 
+CUDA_VISIBLE_DEVICES=0,1 python train_affinitynet.py --architecture resnest101 --tag AffinityNet@ResNeSt-101@Puzzle --label_name ResNeSt101@Puzzle@optimal@train@scale=0.5,1.0,1.5,2.0@aff_fg=0.40_bg=0.10 --data_dir ../VOCdevkit/VOC2012/
+
+3.Make segmentation labels to train segmentation model.
+結合Random Walk生成更好的相似性標籤 注意這只能用一個GPU 多個會造成其中一個類別被替換而失去 get_edge()這個自定義方法
+CUDA_VISIBLE_DEVICES=0 python inference_rw.py --architecture resnest101 --model_name AffinityNet@ResNeSt-101@Puzzle --cam_dir ResNeSt101@Puzzle@optimal@train@scale=0.5,1.0,1.5,2.0 --domain train_aug --data_dir ../VOCdevkit/VOC2012/
+使用更好的相似性標籤生成用於分割模型上的分割標籤
+python make_pseudo_labels.py --experiment_name AffinityNet@ResNeSt-101@Puzzle@train@beta=10@exp_times=8@rw --domain train_aug --threshold 0.35 --crf_iteration 1 --data_dir ../VOCdevkit/VOC2012/
+
+訓練分割模型
+CUDA_VISIBLE_DEVICES=0,1 python train_segmentation.py --backbone resnest101 --mode fix --use_gn True --tag DeepLabv3+@ResNeSt-101@Fix@GN --label_name AffinityNet@ResNeSt-101@Puzzle@train@beta=10@exp_times=8@rw@crf=1 --data_dir ../VOCdevkit/VOC2012/ --num_workers 0 --batch_size 8
+
+4. Evaluate the models
+生成語意分割預測
+CUDA_VISIBLE_DEVICES=0 python3 inference_segmentation.py --backbone resnest101 --mode fix --use_gn True --tag DeepLabv3+@ResNeSt-101@Fix@GN --scale 0.5,1.0,1.5,2.0 --iteration 10
+
+mAP
+python evaluate.py --experiment_name DeepLabv3+@ResNeSt-101@Fix@GN@val@scale=0.5,1.0,1.5,2.0@iteration=10 --domain val --data_dir ../VOCdevkit/VOC2012/SegmentationClass
+
+使用分類模型所生成的CAM
+ResNeSt101@Puzzle@optimal@train@scale=0.5,1.0,1.5,2.0
+
+相似性標籤(演算法)
+ResNeSt101@Puzzle@optimal@train@scale=0.5,1.0,1.5,2.0@aff_fg=0.40_bg=0.10
+
+使用隨機漫步優化相似性標籤後
+AffinityNet@ResNeSt-101@Puzzle@train@beta=10@exp_times=8@rw
+
+使用CRF優化隨機漫步相似性標籤後
+AffinityNet@ResNeSt-101@Puzzle@train@beta=10@exp_times=8@rw@crf=1
+
+分割結果
+DeepLabv3+@ResNeSt-101@Fix@GN@val@scale=0.5,1.0,1.5,2
+
+AffinityNet模型
+AffinityNet@ResNeSt-101@Puzzle
